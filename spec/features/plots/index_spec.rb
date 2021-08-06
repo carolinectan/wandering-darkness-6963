@@ -10,12 +10,12 @@ RSpec.describe 'plots index page' do
     @plot3 = @garden1.plots.create!(number: 3, size: 'Medium', direction: 'West')
     @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West')
 
-    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall")
-    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange")
-    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow")
-    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain")
-    @plant5 = Plant.create!(name: 'Tomato', description: "red roma")
-    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine")
+    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall", days_to_harvest: 200)
+    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange", days_to_harvest: 103)
+    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow", days_to_harvest: 60)
+    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain", days_to_harvest: 75)
+    @plant5 = Plant.create!(name: 'Tomato', description: "red roma", days_to_harvest: 86)
+    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine", days_to_harvest: 50)
 
     @plantplot1 = PlantPlot.create!(plant: @plant1, plot: @plot1)
     @plantplot2 = PlantPlot.create!(plant: @plant2, plot: @plot1)

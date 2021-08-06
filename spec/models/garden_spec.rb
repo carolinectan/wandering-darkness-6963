@@ -9,14 +9,14 @@ RSpec.describe Garden do
     @plot2 = @garden1.plots.create!(number: 2, size: 'Small', direction: 'East')
     @plot3 = @garden1.plots.create!(number: 3, size: 'Medium', direction: 'West')
 
-    @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West') #@garden2!!
+    @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West')
 
-    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall")
-    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange")
-    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow")
-    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain")
-    @plant5 = Plant.create!(name: 'Tomato', description: "red roma")
-    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine")
+    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall", days_to_harvest: 103)
+    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange", days_to_harvest: 50)
+    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow", days_to_harvest: 30)
+    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain", days_to_harvest: 60)
+    @plant5 = Plant.create!(name: 'Tomato', description: "red roma", days_to_harvest: 40)
+    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine", days_to_harvest: 103)
 
     @plantplot1 = PlantPlot.create!(plant: @plant1, plot: @plot1)
     @plantplot2 = PlantPlot.create!(plant: @plant2, plot: @plot1)
@@ -26,7 +26,7 @@ RSpec.describe Garden do
     @plantplot6 = PlantPlot.create!(plant: @plant5, plot: @plot3)
     @plantplot7 = PlantPlot.create!(plant: @plant5, plot: @plot3)
 
-    @plantplot8 = PlantPlot.create!(plant: @plant6, plot: @plot4) #@garden2!!
+    @plantplot8 = PlantPlot.create!(plant: @plant6, plot: @plot4)
   end
 
   describe 'relationships' do
@@ -35,7 +35,7 @@ RSpec.describe Garden do
 
   describe 'instance methods' do
     describe '#unique_plants' do
-      it 'displays the unique plants of a garden' do
+      xit 'displays the unique plants of a garden' do
         # expect(@garden1.unique_plants.first.name).to eq(@plant1.name)
         # expect(@garden1.unique_plants.second.name).to eq(@plant2.name)
         # expect(@garden1.unique_plants.third.name).to eq(@plant3.name)

@@ -9,7 +9,7 @@ RSpec.describe 'garden show page' do
     @plot2 = @garden1.plots.create!(number: 2, size: 'Small', direction: 'East')
     @plot3 = @garden1.plots.create!(number: 3, size: 'Medium', direction: 'West')
 
-    @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West') #@garden2!!
+    @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West')
 
     @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall", days_to_harvest: 103)
     @plant2 = Plant.create!(name: 'Pumpkin', description: "orange", days_to_harvest: 75)
@@ -25,8 +25,7 @@ RSpec.describe 'garden show page' do
     @plantplot5 = PlantPlot.create!(plant: @plant4, plot: @plot3)
     @plantplot6 = PlantPlot.create!(plant: @plant5, plot: @plot3)
     @plantplot7 = PlantPlot.create!(plant: @plant5, plot: @plot3)
-
-    @plantplot8 = PlantPlot.create!(plant: @plant6, plot: @plot4) #@garden2!!
+    @plantplot8 = PlantPlot.create!(plant: @plant6, plot: @plot4)
 
     visit "/gardens/#{@garden1.id}"
   end
