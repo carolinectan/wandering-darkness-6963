@@ -5,6 +5,7 @@
   <div id="plot-<%= plot.id %>">
     <% plot.plants.each do |plant| %>
       <p><%= plant.name %></p>
+      <p><%=button_to "Remove #{plant.name}", "/plots", params: {plot_id: plot.id, plant_id: plant.id}, method: :delete %></p>
     <% end %>
   </div>
 <% end %>
