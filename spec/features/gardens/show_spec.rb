@@ -11,12 +11,12 @@ RSpec.describe 'garden show page' do
 
     @plot4 = @garden2.plots.create!(number: 3, size: 'Medium', direction: 'West') #@garden2!!
 
-    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall")
-    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange")
-    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow")
-    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain")
-    @plant5 = Plant.create!(name: 'Tomato', description: "red roma")
-    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine")
+    @plant1 = Plant.create!(name: 'Sunflower', description: "yellow and tall", days_to_harvest: 103)
+    @plant2 = Plant.create!(name: 'Pumpkin', description: "orange", days_to_harvest: 75)
+    @plant3 = Plant.create!(name: 'Corn', description: "sweet and yellow", days_to_harvest: 60)
+    @plant4 = Plant.create!(name: 'Wheat', description: "brown grain", days_to_harvest: 90)
+    @plant5 = Plant.create!(name: 'Tomato', description: "red roma", days_to_harvest: 175)
+    @plant6 = Plant.create!(name: 'Cucumber', description: "green vine", days_to_harvest: 60)
 
     @plantplot1 = PlantPlot.create!(plant: @plant1, plot: @plot1)
     @plantplot2 = PlantPlot.create!(plant: @plant2, plot: @plot1)
@@ -31,17 +31,15 @@ RSpec.describe 'garden show page' do
     visit "/gardens/#{@garden1.id}"
   end
 
-  it "displays a unique list of plants (no duplicate plants) that are in that garden's plots" do
+  it "displays unique plants in that garden's plots ONLY if it takes less than 100 days to harvest" do
     expect(page).to have_content(@garden1.name)
 
-    expect(page).to have_content(@plant1.name)
     expect(page).to have_content(@plant2.name)
     expect(page).to have_content(@plant3.name)
     expect(page).to have_content(@plant4.name)
-    expect(page).to have_content(@plant5.name)
 
+    expect(page).to have_no_content(@plant1.name)
+    expect(page).to have_no_content(@plant5.name)
     expect(page).to have_no_content(@plant6.name)
-    
-    # And I see that this list only includes plants that take less than 100 days to harvest
   end
 end

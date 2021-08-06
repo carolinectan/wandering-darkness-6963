@@ -1,6 +1,6 @@
 <h1><%= @garden.name %></h1>
 
 
-<% @garden.plants.uniq.each do |plant| %>
+<% @garden.plants.under_100_days.uniq.each do |plant| %>
   <p><%= plant.name %></p>
 <% end %>
