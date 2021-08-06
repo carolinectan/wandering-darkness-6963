@@ -33,7 +33,7 @@ RSpec.describe 'garden show page' do
 
   it "displays a unique list of plants (no duplicate plants) that are in that garden's plots" do
     expect(page).to have_content(@garden1.name)
-    
+
     expect(page).to have_content(@plant1.name)
     expect(page).to have_content(@plant2.name)
     expect(page).to have_content(@plant3.name)
@@ -41,7 +41,7 @@ RSpec.describe 'garden show page' do
     expect(page).to have_content(@plant5.name)
 
     expect(page).to have_no_content(@plant6.name)
-
+    
     # And I see that this list only includes plants that take less than 100 days to harvest
   end
 end
