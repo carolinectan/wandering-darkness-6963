@@ -27,7 +27,7 @@ RSpec.describe 'plots index page' do
 
     @plantplot6 = PlantPlot.create!(plant: @plant6, plot: @plot4)
 
-        visit "/plots"
+    visit "/plots"
   end
 
   it 'displays a list of all plot numbers' do
@@ -48,6 +48,23 @@ RSpec.describe 'plots index page' do
       expect(page).to have_no_content(@plant4.name)
       expect(page).to have_no_content(@plant5.name)
       expect(page).to have_no_content(@plant6.name)
+    end
+  end
+
+  it 'displays a link to remove each plant from that plot' do
+    expect(page).to have_button("Remove #{@plant1.name}")
+    expect(page).to have_button("Remove #{@plant2.name}")
+    expect(page).to have_button("Remove #{@plant3.name}")
+    expect(page).to have_button("Remove #{@plant4.name}")
+    expect(page).to have_button("Remove #{@plant5.name}")
+    expect(page).to have_button("Remove #{@plant6.name}")
+
+    click_on("Remove #{@plant1.name}")
+
+    expect(current_path).to eq("/plots")
+
+    within "#plot-#{@plot1.id}" do
+      expect(page).to have_no_content(@plant1.name)
     end
   end
 end
